@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   operations3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/21 03:56:52 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/21 04:04:21 by knishiok         ###   ########.fr       */
+/*   Created: 2023/10/22 10:01:48 by knishiok          #+#    #+#             */
+/*   Updated: 2023/10/22 10:08:01 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dlist	*stack_push(t_dlist *stack, int val)
+int	ra(t_list **stack_a)
 {
-	t_dlist	*new;
+	if (ft_stack_rotate(stack_a))
+		return (1);
+	ft_putendl_fd("ra", STDOUT_FILENO);
+	return (0);
+}
 
-	new = (t_dlist *)malloc(sizeof(t_dlist));
-	if (new == NULL)
-		return (NULL);
-	new->next = NULL;
-	new->content = val;
-	new->prev = stack;
-	if (stack == NULL)
-		return (new);
-	stack->next = new;
-	return (stack);
+int	rb(t_list **stack_b)
+{
+	if (ft_stack_rotate(stack_b))
+		return (1);
+	ft_putendl_fd("rb", STDOUT_FILENO);
+	return (0);
+}
+
+int	rr(t_list **stack_a, t_list **stack_b)
+{
+	if (ft_stack_rotate(stack_a) || ft_stack_rotate(stack_b))
+		return (1);
+	ft_putendl_fd("rr", STDOUT_FILENO);
+	return (0);
 }

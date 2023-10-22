@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 00:01:57 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/21 04:29:40 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/22 09:07:30 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ int	get_len(char **ptr)
 	return (len);
 }
 
+void	check_sorted(int *numbers, int len)
+{
+	int		i;
+
+	i = 0;
+	while (i < len && numbers[i] == i)
+		i++;
+	if (i == len)
+		exit(EXIT_SUCCESS);
+}
+
 int	main(int argc, char **argv)
 {
 	int		*numbers;
@@ -66,4 +77,5 @@ int	main(int argc, char **argv)
 	numbers = convert_to_int(ptr, len);
 	if (argc == 2)
 		free_fct(ptr);
+	check_sorted(numbers, len);
 }

@@ -6,7 +6,7 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/20 09:55:58 by knishiok          #+#    #+#              #
-#    Updated: 2023/10/21 04:20:35 by knishiok         ###   ########.fr        #
+#    Updated: 2023/10/22 10:15:40 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,16 +61,6 @@ MAND_SRCS = ft_atoi.c \
 	print_upper_x.c 
 
 MAND_OBJS = $(MAND_SRCS:.c=.o)
-
-BONUS = ft_lstadd_back.c \
-	ft_lstadd_front.c \
-	ft_lstclear.c \
-	ft_lstdelone.c \
-	ft_lstiter.c \
-	ft_lstlast.c \
-	ft_lstmap.c \
-	ft_lstnew.c \
-	ft_lstsize.c
 
 BONUS_OBJS = $(BONUS:.c=.o)
 INC = -I .

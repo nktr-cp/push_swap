@@ -6,7 +6,7 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 23:49:05 by knishiok          #+#    #+#              #
-#    Updated: 2023/10/21 04:11:59 by knishiok         ###   ########.fr        #
+#    Updated: 2023/10/22 09:28:08 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ SRCS = srcs/main.c \
 	srcs/parse_input.c \
 	srcs/push_swap_utils.c \
 	srcs/compress.c \
-	srcs/stack.c
+	srcs/operations1.c \
+	srcs/operations2.c \
+	utils/list_funcs.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:53:48 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/21 04:04:26 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/22 10:14:47 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,32 @@
 // debug
 # include <stdio.h>
 
-typedef struct s_dlist
+typedef struct s_list
 {
-	int				content;
-	struct s_dlist	*next;
-	struct s_dlist	*prev;
-}	t_dlist;
+	struct s_list	*next;
+	int				val;
+}	t_list;
 
 char	**parse_args(int argc, char **argv);
 void	free_fct(char **ptr);
-int	*convert_to_int(char **ptr, int len);
-int	ft_strcmp(char *s1, char *s2);
+int		*convert_to_int(char **ptr, int len);
+int		ft_strcmp(char *s1, char *s2);
 void	compress(int *ptr, int len);
-t_dlist	*stack_push(t_dlist *stack, int val);
+
+int		ft_stack_swap(t_list **stack);
+int		ft_stack_push(t_list **stack_to, t_list **stack_from);
+int		ft_stack_rotate(t_list **stack);
+int		ft_stack_reverse_rotate(t_list **stack);
+int		sa(t_list **stack_a);
+int		sb(t_list **stack_b);
+int		ss(t_list **stack_a, t_list **stack_b);
+int		pa(t_list **stack_a, t_list **stack_b);
+int		pb(t_list **stack_a, t_list **stack_b);
+int		ra(t_list **stack_a);
+int		rB(t_list **stack_b);
+int		rr(t_list **stack_a, t_list **stack_b);
+
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
 
 #endif
