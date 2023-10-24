@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:53:48 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/22 10:14:47 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:42:49 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,8 @@ int		rr(t_list **stack_a, t_list **stack_b);
 
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+
+void	push_swap(int *numbers, int len);
 
 #endif
