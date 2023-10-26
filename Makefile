@@ -6,7 +6,7 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 23:49:05 by knishiok          #+#    #+#              #
-#    Updated: 2023/10/24 20:42:15 by knishiok         ###   ########.fr        #
+#    Updated: 2023/10/26 16:45:25 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRCS = srcs/main.c \
 	srcs/operations3.c \
 	srcs/operations4.c \
 	srcs/push_swap.c \
+	srcs/case_three.c \
+	srcs/case_six.c \
 	utils/list_funcs.c
 
 OBJS = $(SRCS:.c=.o)

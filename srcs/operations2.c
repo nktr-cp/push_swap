@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 09:12:52 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/22 10:20:22 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:06:04 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	pa(t_list **stack_a, t_list **stack_b)
 
 int	pb(t_list **stack_a, t_list **stack_b)
 {
-	if (ft_stack_push(stack_a, stack_b))
+	if (ft_stack_push(stack_b, stack_a))
 		return (1);
 	ft_putendl_fd("pb", STDOUT_FILENO);
 	return (0);

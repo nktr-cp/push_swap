@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:53:48 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/24 20:42:49 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:48:23 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,25 @@ int		ss(t_list **stack_a, t_list **stack_b);
 int		pa(t_list **stack_a, t_list **stack_b);
 int		pb(t_list **stack_a, t_list **stack_b);
 int		ra(t_list **stack_a);
-int		rB(t_list **stack_b);
+int		rb(t_list **stack_b);
 int		rr(t_list **stack_a, t_list **stack_b);
+int		rra(t_list **stack_a);
+int		rrb(t_list **stack_a);
+int		rrb(t_list **stack_a);
 
+// list utils
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 
+// utils
+void	print_stack(t_list *lst);
+bool	check_sorted(t_list **stack);
+t_list	*init_lst(int *numbers, int len);
+int		ft_min(int a, int b);
+
+void	under_three(t_list **stack_a_ptr);
+void	under_six(t_list **stack_a_ptr, t_list **stack_b_ptr);
 void	push_swap(int *numbers, int len);
 
 #endif
