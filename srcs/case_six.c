@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 16:45:10 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/26 16:45:19 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/26 21:51:59 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,15 @@ void	push_min(t_list **stack_a_ptr, t_list **stack_b_ptr)
 
 void	under_six(t_list **stack_a_ptr, t_list **stack_b_ptr)
 {
+	int	cnt;
+
+	cnt = 0;
 	while (ft_lstsize(*stack_a_ptr) > 3)
+	{
 		push_min(stack_a_ptr, stack_b_ptr);
+		cnt++;
+	}
 	under_three(stack_a_ptr);
-	while (ft_lstsize(*stack_b_ptr))
+	while (cnt--)
 		pa(stack_a_ptr, stack_b_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:53:48 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/26 16:48:23 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:21:48 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_list
 	struct s_list	*next;
 	int				val;
 }	t_list;
+
+# define MISAR puts("misargsy");
 
 char	**parse_args(int argc, char **argv);
 void	free_fct(char **ptr);
@@ -62,6 +64,7 @@ int		ft_min(int a, int b);
 
 void	under_three(t_list **stack_a_ptr);
 void	under_six(t_list **stack_a_ptr, t_list **stack_b_ptr);
-void	push_swap(int *numbers, int len);
+void	push_swap_start(int *numbers, int len);
+void	push_swap(t_list **stack_a_ptr, t_list **stack_b_ptr);
 
 #endif

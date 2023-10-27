@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 00:01:57 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/24 20:49:19 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:57:37 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,5 @@ int	main(int argc, char **argv)
 	numbers = convert_to_int(ptr, len);
 	if (argc == 2)
 		free_fct(ptr);
-	// check_sorted(numbers, len);
-	push_swap(numbers, len);
+	push_swap_start(numbers, len);
 }

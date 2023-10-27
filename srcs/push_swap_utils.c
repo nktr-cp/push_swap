@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 02:28:59 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/26 16:46:51 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/26 21:52:27 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	print_stack(t_list *lst)
 	t_list	*tmp;
 
 	tmp = lst;
+	if (!tmp)
+		ft_printf("given stack is empty.\n");
 	while (tmp)
 	{
 		ft_printf("%d\n", tmp->val);
