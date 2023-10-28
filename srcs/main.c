@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 00:01:57 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/26 16:57:37 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/28 12:49:10 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,20 @@ int	get_len(char **ptr)
 	return (len);
 }
 
+void	push_swap_preprocess(int *numbers, int len)
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+
+	stack_a = init_lst(numbers, len);
+	if (check_sorted(&stack_a))
+	{
+		free(stack_a);
+		return ;
+	}
+	stack_b = NULL;
+	push_swap(&stack_a, &stack_b);
+}
 
 int	main(int argc, char **argv)
 {
@@ -67,5 +81,5 @@ int	main(int argc, char **argv)
 	numbers = convert_to_int(ptr, len);
 	if (argc == 2)
 		free_fct(ptr);
-	push_swap_start(numbers, len);
+	push_swap_preprocess(numbers, len);
 }

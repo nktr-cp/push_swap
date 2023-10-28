@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 02:28:59 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/26 21:52:27 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:21:05 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ t_list	*init_lst(int *numbers, int len)
 		i++;
 	}
 	return (lst);
+}
+
+int	ft_abs(int nbr)
+{
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
 }
 
 int	ft_min(int a, int b)

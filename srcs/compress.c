@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 04:07:51 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/21 04:13:56 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:01:10 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	compress(int *ptr, int len)
 		j = 0;
 		while (ptr[i] != sorted_numbers[j])
 			j++;
-		ptr[i] = j;
+		ptr[i] = j + 1;
 		i++;
 	}
 	free(sorted_numbers);

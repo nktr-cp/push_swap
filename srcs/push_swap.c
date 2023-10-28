@@ -6,96 +6,128 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 01:20:58 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/26 23:23:19 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:32:24 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap_start(int *numbers, int len)
+void	get_target_index(t_list *stack_a, t_list *stack_b)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_list	*tmp_a;
+	int		diff;
+	int		max_val;
 
-	stack_a = init_lst(numbers, len);
-	if (check_sorted(&stack_a))
+	max_val = 0;
+	while (stack_b)
 	{
-		free(stack_a);
-		return ;
-	}
-	stack_b = NULL;
-	push_swap(&stack_a, &stack_b);
-}
-
-int	ft_ceil(int nbr, int div_num)
-{
-	if (nbr % div_num == 0)
-		return (nbr/div_num);
-	return (nbr/div_num + 1);
-}
-
-int	divide_stack(t_list **stack_a_ptr, t_list **stack_b_ptr, int prev)
-{
-	int		cnt;
-	int		border1;
-	int		border2;
-
-	cnt = ft_lstsize(*stack_a_ptr);
-	border1 = prev + ft_ceil(cnt, 3);
-	border2 = prev + ft_ceil(cnt, 8);
-	while ((*stack_a_ptr) && cnt--)
-	{
-
-		if ((*stack_a_ptr)->val < border1)
+		tmp_a = stack_a;
+		diff = INT_MAX;
+		while (tmp_a)
 		{
-			pb(stack_a_ptr, stack_b_ptr);
-			if ((*stack_a_ptr)->val < border2)
-				rb(stack_b_ptr);
+			if (tmp_a->val > max_val)
+				max_val = tmp_a->val;
+			if (diff > tmp_a->val - stack_b->val && tmp_a->val > stack_b->val)
+				diff = update_target_index(tmp_a, stack_b);
+			tmp_a = tmp_a->next;
+		}
+		if (stack_b->val > max_val)
+			update_index(stack_a, stack_b, max_val);
+		stack_b = stack_b->next;
+	}
+}
+
+int	calc_steps(int cost_a, int cost_b)
+{
+	int	steps;
+
+	steps = 0;
+	while (cost_a || cost_b)
+	{
+		if (cost_a > 0 && cost_b > 0)
+		{
+			steps++;
+			cost_a--;
+			cost_b--;
+		}
+		else if (cost_a < 0 && cost_b < 0)
+		{
+			steps++;
+			cost_a++;
+			cost_b++;
 		}
 		else
-			ra(stack_a_ptr);
+		{
+			steps += (ft_abs(cost_a) + ft_abs(cost_b));
+			cost_a = 0;
+			cost_b = 0;
+		}
 	}
-	return (border1);
+	return (steps);
 }
 
-void	rb_or_rrb(t_list **stack_b_ptr, int target)
+void	stack_move(t_list **stack_a_ptr, t_list **stack_b_ptr)
 {
 	t_list	*tmp;
-	int 	idx;
+	int		cost_a_optim;
+	int		cost_b_optim;
+	int		steps;
 
-	idx = 0;
 	tmp = *stack_b_ptr;
-	while (tmp->val != target)
+	steps = INT_MAX;
+	while (tmp)
 	{
+		if (calc_steps(tmp->cost_a, tmp->cost_b) < steps)
+		{
+			cost_a_optim = tmp->cost_a;
+			cost_b_optim = tmp->cost_b;
+			steps = calc_steps(tmp->cost_a, tmp->cost_b);
+		}
 		tmp = tmp->next;
-		idx++;
 	}
-	if (idx > ft_lstsize(*stack_b_ptr) / 2)
+	do_optimized_rotation(stack_a_ptr, stack_b_ptr, cost_a_optim, cost_b_optim);
+}
+
+void	sort_stack_end(t_list **stack_ptr)
+{
+	int		len;
+	int		min_idx;
+	t_list	*tmp;
+
+	init_index(*stack_ptr, NULL);
+	min_idx = 0;
+	tmp = *stack_ptr;
+	while (tmp)
 	{
-		while ((*stack_b_ptr)->val != target)
-			rrb(stack_b_ptr);
+		if (tmp->val == 1)
+		{
+			min_idx = tmp->idx;
+			break ;
+		}
+		tmp = tmp->next;
 	}
-	else
-	{
-		while ((*stack_b_ptr)->val != target)
-			rb(stack_b_ptr);
-	}
+	len = ft_lstsize(*stack_ptr);
+	if (min_idx * 2 > len)
+		min_idx = - (len - min_idx);
+	do_optimized_rotation(stack_ptr, NULL, min_idx, 0);
 }
 
 void	push_swap(t_list **stack_a_ptr, t_list **stack_b_ptr)
 {
-	int	nbr;
-	int	prev;
-
-	nbr = ft_lstsize(*stack_a_ptr);
-	prev = 0;
-	while (ft_lstsize(*stack_a_ptr) > 6)
-		prev = divide_stack(stack_a_ptr, stack_b_ptr, prev);
-	under_six(stack_a_ptr, stack_b_ptr);
-	nbr -= ft_lstsize(*stack_a_ptr) + 1;
-	while ((*stack_b_ptr))
+	if (ft_lstsize(*stack_a_ptr) <= 6)
 	{
-		rb_or_rrb(stack_b_ptr, nbr--);
+		under_six(stack_a_ptr, stack_b_ptr);
+		return ;
+	}
+	init_stacks(stack_a_ptr, stack_b_ptr);
+	while (*stack_b_ptr || !check_sorted(stack_a_ptr))
+	{
+		init_index(*stack_a_ptr, *stack_b_ptr);
+		get_target_index(*stack_a_ptr, *stack_b_ptr);
+		initialize_cost(*stack_a_ptr, *stack_b_ptr);
+		stack_move(stack_a_ptr, stack_b_ptr);
 		pa(stack_a_ptr, stack_b_ptr);
+		if (*stack_b_ptr == NULL)
+			sort_stack_end(stack_a_ptr);
 	}
 }

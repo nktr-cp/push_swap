@@ -6,11 +6,11 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 09:26:57 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/24 20:55:15 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:21:20 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 int	ft_lstsize(t_list *lst)
 {

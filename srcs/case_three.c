@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 16:43:14 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/26 18:52:06 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:22:20 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,17 @@ void	sort_three(t_list **stack_a_ptr)
 	int	n[3];
 
 	init_three(n, stack_a_ptr);
-	// 0 2 1
-	if (n[0] < n[1] && n[1] > n[2] && n[0] < n[2])	
+	if (n[0] < n[1] && n[1] > n[2] && n[0] < n[2])
 	{
 		sa(stack_a_ptr);
 		ra(stack_a_ptr);
 	}
-	// 1 0 2
 	if (n[0] > n[1] && n[1] < n[2] && n[0] < n[2])
 		sa(stack_a_ptr);
-	// 1 2 0
 	if (n[0] < n[1] && n[1] > n[2] && n[0] > n[2])
 		rra(stack_a_ptr);
-	// 2 0 1
 	if (n[0] > n[1] && n[1] < n[2] && n[0] > n[2])
 		ra(stack_a_ptr);
-	// 2 1 0
 	if (n[0] > n[1] && n[1] > n[2])
 	{
 		sa(stack_a_ptr);

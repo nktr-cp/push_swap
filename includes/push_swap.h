@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:53:48 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/26 22:21:48 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:43:19 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@
 typedef struct s_list
 {
 	struct s_list	*next;
+	int				idx;
 	int				val;
+	int				cost_a;
+	int				cost_b;
+	int				target_idx;
 }	t_list;
-
-# define MISAR puts("misargsy");
 
 char	**parse_args(int argc, char **argv);
 void	free_fct(char **ptr);
@@ -48,23 +50,33 @@ int		ra(t_list **stack_a);
 int		rb(t_list **stack_b);
 int		rr(t_list **stack_a, t_list **stack_b);
 int		rra(t_list **stack_a);
-int		rrb(t_list **stack_a);
-int		rrb(t_list **stack_a);
+int		rrb(t_list **stack_b);
+int		rrr(t_list **stack_a, t_list **stack_b);
 
-// list utils
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 
-// utils
 void	print_stack(t_list *lst);
 bool	check_sorted(t_list **stack);
 t_list	*init_lst(int *numbers, int len);
 int		ft_min(int a, int b);
+int		ft_abs(int nbr);
+
+void	do_optimized_rotation(t_list **stack_a_ptr, t_list **stack_b_ptr,
+			int cost_a, int cost_b);
+
+void	init_stacks(t_list **stack_a_ptr, t_list **stack_b_ptr);
+void	init_index(t_list *stack_a, t_list *stack_b);
+int		update_target_index(t_list *stack_a, t_list *stack_b);
+void	initialize_cost(t_list *stack_a, t_list *stack_b);
+void	update_index(t_list *stack_a, t_list *stack_b, int value);
 
 void	under_three(t_list **stack_a_ptr);
 void	under_six(t_list **stack_a_ptr, t_list **stack_b_ptr);
-void	push_swap_start(int *numbers, int len);
+void	push_swap_preprocess(int *numbers, int len);
+void	do_optimized_rotation(t_list **stack_a_ptr, t_list **stack_b_ptr,
+			int cost_a, int cost_b);
 void	push_swap(t_list **stack_a_ptr, t_list **stack_b_ptr);
 
 #endif

@@ -6,16 +6,16 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 16:45:10 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/26 21:51:59 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:23:20 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		get_min(t_list *stack_a)
+int	get_min(t_list *stack_a)
 {
 	t_list	*tmp;
-	int 	minval;
+	int		minval;
 
 	minval = stack_a->val;
 	tmp = stack_a;
@@ -30,7 +30,7 @@ int		get_min(t_list *stack_a)
 bool	is_in_lowerhalf(t_list *stack_a)
 {
 	t_list	*tmp;
-	int 	minval;
+	int		minval;
 	int		minidx;
 
 	tmp = stack_a;
