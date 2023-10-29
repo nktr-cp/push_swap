@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 21:52:43 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/29 14:18:52 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 15:35:58 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	read_moves(t_list **stack_a_ptr, t_list **stack_b_ptr)
 
 	while (1)
 	{
-		line = get_next_line(STDOUT_FILENO);
+		line = get_next_line(STDIN_FILENO);
 		if (line == NULL)
 			break ;
 		if (process_moves(stack_a_ptr, stack_b_ptr, line) == EXIT_FAILURE)
@@ -67,11 +67,6 @@ void	judge_fct_preprocess(int *numbers, int len)
 	t_list	*stack_b;
 
 	stack_a = init_lst(numbers, len);
-	if (check_sorted(&stack_a))
-	{
-		free(stack_a);
-		return ;
-	}
 	stack_b = NULL;
 	if (read_moves(&stack_a, &stack_b) == EXIT_SUCCESS)
 	{
