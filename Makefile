@@ -6,7 +6,7 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 23:49:05 by knishiok          #+#    #+#              #
-#    Updated: 2023/10/29 14:42:12 by knishiok         ###   ########.fr        #
+#    Updated: 2023/10/29 15:13:58 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,7 @@ clean:
 fclean: clean
 	$(RM) $(LIB)
 	$(RM) $(NAME)
+	$(BONUS)
 
 re: fclean all
 
