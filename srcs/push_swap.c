@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 01:20:58 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/28 16:32:24 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 14:05:35 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,17 @@ void	get_target_index(t_list *stack_a, t_list *stack_b)
 			tmp_a = tmp_a->next;
 		}
 		if (stack_b->val > max_val)
-			update_index(stack_a, stack_b, max_val);
+			update_target_index_b_largest(stack_a, stack_b, max_val);
 		stack_b = stack_b->next;
 	}
 }
 
 int	calc_steps(int cost_a, int cost_b)
 {
-	int	steps;
-
-	steps = 0;
-	while (cost_a || cost_b)
-	{
-		if (cost_a > 0 && cost_b > 0)
-		{
-			steps++;
-			cost_a--;
-			cost_b--;
-		}
-		else if (cost_a < 0 && cost_b < 0)
-		{
-			steps++;
-			cost_a++;
-			cost_b++;
-		}
-		else
-		{
-			steps += (ft_abs(cost_a) + ft_abs(cost_b));
-			cost_a = 0;
-			cost_b = 0;
-		}
-	}
-	return (steps);
+	if (cost_a * cost_b > 0)
+		return (ft_max(ft_abs(cost_a), ft_abs(cost_b)));
+	else
+		return (ft_abs(cost_a) + ft_abs(cost_b));
 }
 
 void	stack_move(t_list **stack_a_ptr, t_list **stack_b_ptr)
@@ -126,7 +105,7 @@ void	push_swap(t_list **stack_a_ptr, t_list **stack_b_ptr)
 		get_target_index(*stack_a_ptr, *stack_b_ptr);
 		initialize_cost(*stack_a_ptr, *stack_b_ptr);
 		stack_move(stack_a_ptr, stack_b_ptr);
-		pa(stack_a_ptr, stack_b_ptr);
+		pa(stack_a_ptr, stack_b_ptr, true);
 		if (*stack_b_ptr == NULL)
 			sort_stack_end(stack_a_ptr);
 	}

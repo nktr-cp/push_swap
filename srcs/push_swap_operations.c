@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 16:27:46 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/28 16:39:59 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 14:07:47 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static void	rotate_stack_a(t_list **stack_a_ptr, int *cost)
 {
 	if (*cost < 0)
 	{
-		rra(stack_a_ptr);
+		rra(stack_a_ptr, true);
 		(*cost)++;
 	}
 	else if (*cost > 0)
 	{
-		ra(stack_a_ptr);
+		ra(stack_a_ptr, true);
 		(*cost)--;
 	}
 }
@@ -29,7 +29,7 @@ static void	rotate_stack_a(t_list **stack_a_ptr, int *cost)
 static void	rrr_and_adjust_cost(t_list **stack_a_ptr, t_list **stack_b_ptr,
 					int *cost_a, int *cost_b)
 {
-	rrr(stack_a_ptr, stack_b_ptr);
+	rrr(stack_a_ptr, stack_b_ptr, true);
 	(*cost_a)++;
 	(*cost_b)++;
 }
@@ -37,7 +37,7 @@ static void	rrr_and_adjust_cost(t_list **stack_a_ptr, t_list **stack_b_ptr,
 static void	rr_and_adjust_cost(t_list **stack_a_ptr, t_list **stack_b_ptr,
 					int *cost_a, int *cost_b)
 {
-	rr(stack_a_ptr, stack_b_ptr);
+	rr(stack_a_ptr, stack_b_ptr, true);
 	(*cost_a)--;
 	(*cost_b)--;
 }
@@ -55,12 +55,12 @@ void	do_optimized_rotation(t_list **stack_a_ptr, t_list **stack_b_ptr,
 			rotate_stack_a(stack_a_ptr, &cost_a);
 		else if (cost_b < 0)
 		{
-			rrb(stack_b_ptr);
+			rrb(stack_b_ptr, true);
 			cost_b++;
 		}
 		else if (cost_b > 0)
 		{
-			rb(stack_b_ptr);
+			rb(stack_b_ptr, true);
 			cost_b--;
 		}
 	}

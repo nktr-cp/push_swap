@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 16:45:10 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/28 16:23:20 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 14:07:07 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ void	push_min(t_list **stack_a_ptr, t_list **stack_b_ptr)
 	while ((*stack_a_ptr)->val != minval)
 	{
 		if (is_in_lowerhalf(*stack_a_ptr))
-			ra(stack_a_ptr);
+			ra(stack_a_ptr, true);
 		else
-			rra(stack_a_ptr);
+			rra(stack_a_ptr, true);
 	}
-	pb(stack_a_ptr, stack_b_ptr);
+	pb(stack_a_ptr, stack_b_ptr, true);
 }
 
 void	under_six(t_list **stack_a_ptr, t_list **stack_b_ptr)
@@ -75,5 +75,5 @@ void	under_six(t_list **stack_a_ptr, t_list **stack_b_ptr)
 	}
 	under_three(stack_a_ptr);
 	while (cnt--)
-		pa(stack_a_ptr, stack_b_ptr);
+		pa(stack_a_ptr, stack_b_ptr, true);
 }

@@ -6,48 +6,11 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 00:01:57 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/28 12:49:10 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 14:32:29 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	check_args(int len, char **argv)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < len)
-	{
-		j = 0;
-		if (argv[i][j] == '-')
-			j++;
-		if (argv[i][j] == '\0')
-		{
-			ft_putstr_fd("Error\n", STDERR_FILENO);
-			exit(EXIT_FAILURE);
-		}
-		while (argv[i][j] != '\0')
-		{
-			if (!ft_isdigit(argv[i][j++]))
-			{
-				ft_putstr_fd("Error\n", STDERR_FILENO);
-				exit(EXIT_FAILURE);
-			}
-		}
-	}
-}
-
-int	get_len(char **ptr)
-{
-	int	len;
-
-	len = 0;
-	while (ptr[len])
-		len++;
-	return (len);
-}
 
 void	push_swap_preprocess(int *numbers, int len)
 {
@@ -62,6 +25,8 @@ void	push_swap_preprocess(int *numbers, int len)
 	}
 	stack_b = NULL;
 	push_swap(&stack_a, &stack_b);
+	ft_lstclear(&stack_a);
+	ft_lstclear(&stack_b);
 }
 
 int	main(int argc, char **argv)

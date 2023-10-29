@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 07:21:35 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/18 18:28:50 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 14:34:41 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ char	*ft_strdup(const char *src)
 		new_str[i] = '\0';
 	}
 	return (new_str);
-}
-
-int	ft_max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
 }
 
 static unsigned long	unsigned_digit_count(unsigned long value, int base_size)

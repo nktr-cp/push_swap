@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 09:26:57 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/28 16:21:20 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:47:18 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,21 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	while (cur->next)
 		cur = cur->next;
 	cur->next = new;
+}
+
+void	ft_lstclear(t_list **lst)
+{
+	t_list	*cur;
+	t_list	*next;
+
+	if (lst == NULL)
+		return ;
+	cur = *lst;
+	while (cur)
+	{
+		next = cur->next;
+		free(cur);
+		cur = next;
+	}
+	*lst = NULL;
 }

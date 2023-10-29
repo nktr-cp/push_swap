@@ -6,7 +6,7 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/20 09:55:58 by knishiok          #+#    #+#              #
-#    Updated: 2023/10/22 10:15:40 by knishiok         ###   ########.fr        #
+#    Updated: 2023/10/29 14:37:06 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,9 @@ MAND_SRCS = ft_atoi.c \
 	ft_substr.c \
 	ft_tolower.c \
 	ft_toupper.c \
+	ft_min.c \
+	ft_max.c \
+	ft_abs.c \
 	ft_printf.c \
 	helper1.c \
 	helper2.c \
@@ -58,7 +61,8 @@ MAND_SRCS = ft_atoi.c \
 	print_d_i.c \
 	print_u.c \
 	print_x.c \
-	print_upper_x.c 
+	print_upper_x.c \
+	get_next_line.c 
 
 MAND_OBJS = $(MAND_SRCS:.c=.o)
 

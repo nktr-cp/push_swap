@@ -6,24 +6,36 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 02:28:59 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/28 16:21:05 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 14:39:05 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// for debug
-void	print_stack(t_list *lst)
+void	check_args(int len, char **argv)
 {
-	t_list	*tmp;
+	int	i;
+	int	j;
 
-	tmp = lst;
-	if (!tmp)
-		ft_printf("given stack is empty.\n");
-	while (tmp)
+	i = -1;
+	while (++i < len)
 	{
-		ft_printf("%d\n", tmp->val);
-		tmp = tmp->next;
+		j = 0;
+		if (argv[i][j] == '-')
+			j++;
+		if (argv[i][j] == '\0')
+		{
+			ft_putstr_fd("Error\n", STDERR_FILENO);
+			exit(EXIT_FAILURE);
+		}
+		while (argv[i][j] != '\0')
+		{
+			if (!ft_isdigit(argv[i][j++]))
+			{
+				ft_putstr_fd("Error\n", STDERR_FILENO);
+				exit(EXIT_FAILURE);
+			}
+		}
 	}
 }
 
@@ -60,19 +72,16 @@ t_list	*init_lst(int *numbers, int len)
 		ft_lstadd_back(&lst, new);
 		i++;
 	}
+	free(numbers);
 	return (lst);
 }
 
-int	ft_abs(int nbr)
+int	get_len(char **ptr)
 {
-	if (nbr < 0)
-		return (-nbr);
-	return (nbr);
-}
+	int	len;
 
-int	ft_min(int a, int b)
-{
-	if (a > b)
-		return (b);
-	return (a);
+	len = 0;
+	while (ptr[len])
+		len++;
+	return (len);
 }

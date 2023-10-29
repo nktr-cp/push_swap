@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:53:48 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/28 16:43:19 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 14:30:59 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,25 @@ int		ft_stack_swap(t_list **stack);
 int		ft_stack_push(t_list **stack_to, t_list **stack_from);
 int		ft_stack_rotate(t_list **stack);
 int		ft_stack_reverse_rotate(t_list **stack);
-int		sa(t_list **stack_a);
-int		sb(t_list **stack_b);
-int		ss(t_list **stack_a, t_list **stack_b);
-int		pa(t_list **stack_a, t_list **stack_b);
-int		pb(t_list **stack_a, t_list **stack_b);
-int		ra(t_list **stack_a);
-int		rb(t_list **stack_b);
-int		rr(t_list **stack_a, t_list **stack_b);
-int		rra(t_list **stack_a);
-int		rrb(t_list **stack_b);
-int		rrr(t_list **stack_a, t_list **stack_b);
+int		sa(t_list **stack_a, bool out);
+int		sb(t_list **stack_b, bool out);
+int		ss(t_list **stack_a, t_list **stack_b, bool out);
+int		pa(t_list **stack_a, t_list **stack_b, bool out);
+int		pb(t_list **stack_a, t_list **stack_b, bool out);
+int		ra(t_list **stack_a, bool out);
+int		rb(t_list **stack_b, bool out);
+int		rr(t_list **stack_a, t_list **stack_b, bool out);
+int		rra(t_list **stack_a, bool out);
+int		rrb(t_list **stack_b, bool out);
+int		rrr(t_list **stack_a, t_list **stack_b, bool out);
 
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstclear(t_list **lst);
 
-void	print_stack(t_list *lst);
+void	check_args(int len, char **argv);
+int		get_len(char **ptr);
 bool	check_sorted(t_list **stack);
 t_list	*init_lst(int *numbers, int len);
 int		ft_min(int a, int b);
@@ -70,7 +72,8 @@ void	init_stacks(t_list **stack_a_ptr, t_list **stack_b_ptr);
 void	init_index(t_list *stack_a, t_list *stack_b);
 int		update_target_index(t_list *stack_a, t_list *stack_b);
 void	initialize_cost(t_list *stack_a, t_list *stack_b);
-void	update_index(t_list *stack_a, t_list *stack_b, int value);
+void	update_target_index_b_largest(t_list *stack_a, t_list *stack_b,
+			int value);
 
 void	under_three(t_list **stack_a_ptr);
 void	under_six(t_list **stack_a_ptr, t_list **stack_b_ptr);

@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 16:31:00 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/28 16:32:46 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 14:05:55 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	init_stacks(t_list **stack_a_ptr, t_list **stack_b_ptr)
 	while (i < stack_size)
 	{
 		if ((*stack_a_ptr)->val > stack_size / 2)
-			pb(stack_a_ptr, stack_b_ptr);
+			pb(stack_a_ptr, stack_b_ptr, true);
 		else
-			ra(stack_a_ptr);
+			ra(stack_a_ptr, true);
 		i++;
 	}
 	while (ft_lstsize(*stack_a_ptr) > 3)
-		pb(stack_a_ptr, stack_b_ptr);
+		pb(stack_a_ptr, stack_b_ptr, true);
 	under_three(stack_a_ptr);
 }
 
@@ -77,7 +77,7 @@ void	initialize_cost(t_list *stack_a, t_list *stack_b)
 			stack_b->cost_b = - (len_b - stack_b->idx);
 		else
 			stack_b->cost_b = stack_b->idx;
-		if (stack_b->target_idx > len_a / 2)
+		if (stack_b->target_idx * 2 > len_a)
 			stack_b->cost_a = - (len_a - stack_b->target_idx);
 		else
 			stack_b->cost_a = stack_b->target_idx;
@@ -85,7 +85,8 @@ void	initialize_cost(t_list *stack_a, t_list *stack_b)
 	}
 }
 
-void	update_index(t_list *stack_a, t_list *stack_b, int value)
+void	update_target_index_b_largest(t_list *stack_a,
+				t_list *stack_b, int value)
 {
 	int	min_val;
 

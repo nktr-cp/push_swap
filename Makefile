@@ -6,12 +6,12 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 23:49:05 by knishiok          #+#    #+#              #
-#    Updated: 2023/10/28 16:34:32 by knishiok         ###   ########.fr        #
+#    Updated: 2023/10/29 14:42:12 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
 
@@ -23,10 +23,10 @@ SRCS = srcs/main.c \
 	srcs/parse_input.c \
 	srcs/push_swap_utils.c \
 	srcs/compress.c \
-	srcs/operations1.c \
-	srcs/operations2.c \
-	srcs/operations3.c \
-	srcs/operations4.c \
+	srcs/operations_base.c \
+	srcs/operations_swap_push.c \
+	srcs/operations_rotate.c \
+	srcs/operations_reverse_rotate.c \
 	srcs/push_swap.c \
 	srcs/case_three.c \
 	srcs/case_six.c \
@@ -36,11 +36,32 @@ SRCS = srcs/main.c \
 	srcs/push_swap_operations.c \
 	utils/list_funcs.c
 
+BSRCS = bonus/main_bonus.c \
+	srcs/parse_input.c \
+	srcs/operations_base.c \
+	srcs/operations_swap_push.c \
+	srcs/operations_rotate.c \
+	srcs/operations_reverse_rotate.c \
+	srcs/case_three.c \
+	srcs/push_swap_utils.c \
+	srcs/push_swap_utils2.c \
+	srcs/compress.c \
+	utils/list_funcs.c
+	
+
+BONUS = checker
+
 OBJS = $(SRCS:.c=.o)
+BOBJS = $(BSRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIB)
+	$(CC) $(CFLAGS) $(INC) $^ -o $@
+
+bonus: $(BONUS)
+
+$(BONUS): $(BOBJS) $(LIB)
 	$(CC) $(CFLAGS) $(INC) $^ -o $@
 
 %.o: %.c
