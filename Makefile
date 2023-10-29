@@ -6,7 +6,7 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 23:49:05 by knishiok          #+#    #+#              #
-#    Updated: 2023/10/29 15:13:58 by knishiok         ###   ########.fr        #
+#    Updated: 2023/10/29 15:17:03 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,13 +71,13 @@ $(LIB):
 	make -C libft
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(BOBJS)
 	make clean -C libft
 
 fclean: clean
 	$(RM) $(LIB)
 	$(RM) $(NAME)
-	$(BONUS)
+	$(RM) $(BONUS)
 
 re: fclean all
 
