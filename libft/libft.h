@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:02:40 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/29 14:35:30 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 15:47:38 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define LOWER_HEX "0123456789abcdef"
 # define UPPER_HEX "0123456789ABCDEF"
 # define SPECIFIER "cspdiuxX%"
+# define BUFFER_SIZE 42
 
 typedef struct s_flags
 {
@@ -120,17 +121,12 @@ int			process_hgap(t_format *info, char putsign,
 				unsigned int n, char fill);
 t_format	parse_flags(const char **s);
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-# define FD_MAX 25476
-
-char	*get_next_line(int fd);
-size_t	ft_strlen(const char *s);
-void	*ft_calloc(size_t count, size_t size);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *src);
-void	ft_bzero(void *s, size_t n);
-char	*ft_strchr(const char *s, int c);
+char		*get_next_line(int fd);
+size_t		ft_strlen(const char *s);
+void		*ft_calloc(size_t count, size_t size);
+char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strdup(const char *src);
+void		ft_bzero(void *s, size_t n);
+char		*ft_strchr(const char *s, int c);
 
 #endif

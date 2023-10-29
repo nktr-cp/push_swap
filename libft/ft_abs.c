@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 14:33:39 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/29 14:34:12 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 15:46:41 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,3 @@ int	ft_abs(int nbr)
 		return (-nbr);
 	return (nbr);
 }
-
