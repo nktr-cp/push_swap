@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 02:28:59 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/29 14:39:05 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 16:04:33 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ t_list	*init_lst(int *numbers, int len)
 	while (i < len)
 	{
 		new = (t_list *)malloc(sizeof(t_list));
+		if (new == NULL)
+			exit(EXIT_FAILURE);
 		new->val = numbers[i];
 		new->next = NULL;
 		ft_lstadd_back(&lst, new);

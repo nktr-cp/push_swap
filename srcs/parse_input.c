@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 02:01:50 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/29 14:38:55 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 16:04:14 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	*convert_to_int(char **ptr, int len)
 	int	*res;
 
 	res = (int *)malloc(len * sizeof(int));
+	if (res == NULL)
+		exit(EXIT_FAILURE);
 	i = -1;
 	while (++i < len)
 		res[i] = (int)ft_atoi(ptr[i]);

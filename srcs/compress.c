@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 04:07:51 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/28 16:01:10 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 16:03:47 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	*duplicate_numbers(int *ptr, int len)
 	int	i;
 
 	res = (int *)malloc(sizeof(int) * len);
+	if (res == NULL)
+		exit(EXIT_FAILURE);
 	i = 0;
 	while (i < len)
 	{
