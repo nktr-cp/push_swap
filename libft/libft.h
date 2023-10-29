@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:02:40 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/29 15:47:38 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/10/29 15:50:22 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,11 @@
 # include <stdarg.h>
 # include <stdbool.h>
 
-// # ifndef T_LIST
-// #  define T_LIST
-// typedef struct s_list
-// {
-// 	void			*content;
-// 	struct s_list	*next;
-// }	t_list;
-// # endif
-
 # define LOWER_HEX "0123456789abcdef"
 # define UPPER_HEX "0123456789ABCDEF"
 # define SPECIFIER "cspdiuxX%"
 # define BUFFER_SIZE 42
+# define FD_MAX 25476
 
 typedef struct s_flags
 {
